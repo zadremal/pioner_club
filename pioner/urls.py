@@ -26,9 +26,12 @@ from markdownx import urls as markdownx
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^api/v1/parties/', include(('REST.urls', 'REST'), namespace="REST")),
 ]
 
 urlpatterns += [
-    url(r'^markdownx/', include(markdownx))
+    url(r'^markdownx/', include(markdownx)),
+
 ]
 
