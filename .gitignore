@@ -1,6 +1,7 @@
 
 #pycharm files
 /.idea
+pioner/__pycache__
 
 #databases
 *.sqlite3
