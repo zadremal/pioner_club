@@ -2,6 +2,8 @@
 #pycharm files
 /.idea
 pioner/__pycache__
+REST/__pycache__
 
 #databases
 *.sqlite3
+REST/migrations

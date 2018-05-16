@@ -1,8 +1,10 @@
-from django.conf.urls import url
+
+from django.urls import path
 
 from . import views
 
 urlpatterns =  [
-    url(r'^$', views.PartiesList.as_view(), name='parties_list'),
+    path('parties/<int:pk>/', views.DetailParties.as_view(), name='parties_detail'),
+    path('parties/', views.ListParties.as_view(), name='parties_list'),
 
 ]

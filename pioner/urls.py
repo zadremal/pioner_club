@@ -15,8 +15,6 @@ Including another URLconf
 """
 
 
-
-from django.conf.urls import url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
@@ -26,12 +24,12 @@ from markdownx import urls as markdownx
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
-    url(r'^api/v1/parties/', include(('REST.urls', 'REST'), namespace="REST")),
-] + static(r'/media/', document_root=settings.MEDIA_ROOT)
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    path('api/v1/', include(('REST.urls', 'REST'), namespace="REST")),
+] + static('/media/', document_root=settings.MEDIA_ROOT)
 
 urlpatterns += [
-    url(r'^markdownx/', include(markdownx)),
+    path('markdownx/', include(markdownx)),
 ]
 
 

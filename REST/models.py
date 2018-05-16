@@ -15,7 +15,7 @@ class Party(models.Model):
     time_start = models.TimeField(default=datetime.time(22,00))
     time_end = models.TimeField(default=datetime.time(6,00))
     description = MarkdownxField(verbose_name="Описание мероприятия")
-    type= models.ForeignKey('Places', on_delete=models.CASCADE)
+    place= models.ForeignKey('Places', on_delete=models.CASCADE)
     repeat = models.BooleanField(default=False)
     active = models.BooleanField(default = True)
     on_main = models.BooleanField(default = True)
