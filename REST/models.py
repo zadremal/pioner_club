@@ -19,7 +19,7 @@ class Party(models.Model):
     repeat = models.BooleanField(default=False)
     active = models.BooleanField(default = True)
     on_main = models.BooleanField(default = True)
-    poster = models.ImageField()
+    poster = models.ImageField(upload_to="posters")
     poster_alt = models.CharField(blank=True, max_length=255, )
 
 

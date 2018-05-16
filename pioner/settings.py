@@ -80,8 +80,18 @@ WSGI_APPLICATION = 'pioner.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': 'vh114.timeweb.ru',
+        'NAME' : 'cv03944_p',
+        'USER' : 'cv03944_p',
+        'PASSWORD' : 'Fuckyoudatabase01',
+        'default - character - set': 'utf8',
+        'OPTIONS': {
+            'init_command': "SET SESSION sql_mode='STRICT_ALL_TABLES'",
+
+        },
+
     }
 }
 
