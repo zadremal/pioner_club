@@ -6,3 +6,4 @@ from . import models
 
 admin.site.register(models.Party, MarkdownxModelAdmin)
 admin.site.register(models.Places, MarkdownxModelAdmin)
+admin.site.register(models.Deals, MarkdownxModelAdmin)

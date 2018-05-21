@@ -5,32 +5,18 @@ class PlacesSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Places
 
-        fields = (
-            'name',
-            'location',
-            'price'
-        )
+        fields = '__all__'
 
 class PartyDetailSerializer(serializers.ModelSerializer):
     place = PlacesSerializer()
     class Meta:
         model = models.Party
 
-        fields = (
-            'id',
-            'name',
-            'date',
-            'time_start',
-            'time_end',
-            'description',
-            'place',
-            'active',
-            'on_main',
-            'poster',
-            'poster_alt'
-        )
+        fields = '__all__'
 
-class PartyListSerializer(serializers.ModelSerializer):
+
+
+class PartiesListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.Party
@@ -44,3 +30,20 @@ class PartyListSerializer(serializers.ModelSerializer):
             'poster',
             'poster_alt'
         )
+
+class DealsListSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Deals
+
+        fields = (
+            "id",
+            "name",
+            "poster",
+            "poster_alt"
+        )
+
+class DealDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Deals
+
+        fields = '__all__'
