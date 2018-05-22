@@ -14,8 +14,6 @@ class PartyDetailSerializer(serializers.ModelSerializer):
 
         fields = '__all__'
 
-
-
 class PartiesListSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -47,3 +45,32 @@ class DealDetailSerializer(serializers.ModelSerializer):
         model = models.Deals
 
         fields = '__all__'
+
+class DishSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Dish
+        fields = "__all__"
+
+
+class MenuCategorySerializer(serializers.ModelSerializer):
+    dish= DishSerializer(many=True, read_only=True)
+    class Meta :
+
+        model = models.DishCategories
+        fields = (
+            'id',
+            'menu_category',
+            'dish_category',
+            'dish',
+            'dish_category_description',
+        )
+
+class MenuSerializer(serializers.ModelSerializer):
+    sub_category = MenuCategorySerializer(many=True, read_only=True)
+    class Meta:
+        model = models.MenuCategories
+        fields = (
+            "id",
+            "name",
+            "sub_category"
+        )

@@ -59,3 +59,51 @@ class Deals(models.Model):
     class Meta:
         verbose_name_plural = "Акции"
         verbose_name = "Акция"
+
+class Units(models.Model):
+    unit = models.CharField(max_length=32)
+    description = models.CharField(max_length=64)
+
+    def __str__(self):
+        return self.unit
+
+    class Meta:
+        verbose_name_plural = "Единицы измерения"
+
+
+class MenuCategories(models.Model):
+    name = models.CharField(verbose_name="Категории меню", max_length=255)
+
+    def __str__(self):
+        return self.name
+
+class DishCategories(models.Model):
+    menu_category = models.ForeignKey('MenuCategories', related_name='sub_category', on_delete=models.CASCADE)
+    dish_category = models.CharField(max_length=255)
+    dish_category_description = models.CharField(max_length=255, blank=True)
+
+    def __str__(self):
+        return '{} - {}'.format(self.menu_category, self.dish_category)
+
+
+
+class Dish(models.Model):
+    name = models.CharField(max_length=255)
+    category = models.ForeignKey("DishCategories", related_name="dish", on_delete=models.CASCADE)
+    consist = models.TextField()
+    net = models.FloatField()
+    units = models.ForeignKey('Units', on_delete=models.CASCADE)
+    price = models.IntegerField()
+    iiko_id = models.IntegerField(blank=True, null= True)
+
+    class Meta:
+        verbose_name_plural = "Меню"
+
+    def __str__(self):
+        return self.name
+
+    def __unicode__(self):
+        return self.name
+
+
+

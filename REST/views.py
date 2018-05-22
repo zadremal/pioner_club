@@ -34,3 +34,14 @@ class ListDealsMain(generics.ListAPIView):
 class DetailDeal(generics.RetrieveAPIView):
     queryset = models.Deals.objects.all()
     serializer_class = serializers.DealDetailSerializer
+
+class MenuSubCategoryList(generics.ListAPIView):
+    serializer_class = serializers.MenuCategorySerializer
+
+    def get_queryset(self):
+        return models.DishCategories.objects.filter(menu_category = self.kwargs['pk'])
+
+
+class MenuList(generics.ListAPIView):
+    queryset = models.MenuCategories.objects.all()
+    serializer_class = serializers.MenuSerializer
