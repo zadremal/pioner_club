@@ -7,3 +7,6 @@ REST/__pycache__
 #databases
 *.sqlite3
 REST/migrations
+
+#env
+enx.txt
