@@ -146,11 +146,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-MEDIA_ROOT = './media/'
-
 MEDIA_URL = '/media/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+if DEBUG is True:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+    MEDIA_ROOT = './media/'
+else:
+    STATIC_ROOT = "/var/www/pioner/static"
+    MEDIA_ROOT = "/var/www/pioner/media"
+
 
 MARKDOWNX_MARKDOWNIFY_FUNCTION = 'markdownx.utils.markdownify'
 

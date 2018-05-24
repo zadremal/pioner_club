@@ -26,7 +26,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/v1/', include(('REST.urls', 'REST'), namespace="REST")),
-] + static('/media/', document_root=settings.MEDIA_ROOT)
+
+]
+if settings.DEBUG is True:
+    urlpatterns += static('/media/', document_root=settings.MEDIA_ROOT)
 
 urlpatterns += [
     path('markdownx/', include(markdownx)),
