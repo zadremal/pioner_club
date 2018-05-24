@@ -11,3 +11,6 @@ admin.site.register(models.MenuCategories)
 admin.site.register(models.DishCategories)
 admin.site.register(models.Units)
 admin.site.register(models.Dish)
+@admin.register(models.Leads)
+class LeadsAdmin(admin.ModelAdmin):
+    readonly_fields = ["name", "phone", "email"]

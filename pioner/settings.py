@@ -20,12 +20,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'wc69+6v2m1d9&!@e68)z+z$z&d&prr^4bfre$%$(+@k^vi+8a#'
+SECRET_KEY = os.environ.get('SECRET_KEY', 'wc69+6v2m1d9&!@e68)z+z$z&d&prr^4bfre$%$(+@k^vi+8a#')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ.get("DJANGO_ALLOWED_HOSTS")]
 
 
 # Application definition
@@ -56,7 +56,16 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+
+#SECURITY
+SECURE_CONTENT_TYPE_NOSNIFF=True
+SECURE_BROWSER_XSS_FILTER=True
+SESSION_COOKIE_SECURE=True
+CSRF_COOKIE_SECURE=True
+X_FRAME_OPTIONS='DENY'
+
 ROOT_URLCONF = 'pioner.urls'
+
 
 TEMPLATES = [
     {
@@ -84,14 +93,13 @@ DATABASES = {
     'default': {
 
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'vh114.timeweb.ru',
-        'NAME' : 'cv03944_p',
-        'USER' : 'cv03944_p',
-        'PASSWORD' : 'Fuckyoudatabase01',
+        'HOST': os.environ.get('DJANGO_DB_HOST'),
+        'NAME' : os.environ.get('DJANGO_DB_NAME'),
+        'USER' : os.environ.get('DJANGO_DB_USER'),
+        'PASSWORD' : os.environ.get('DJANGO_DB_PASSWORD'),
         'default - character - set': 'utf8',
         'OPTIONS': {
             'init_command': "SET SESSION sql_mode='STRICT_ALL_TABLES'",
-
         },
 
     }

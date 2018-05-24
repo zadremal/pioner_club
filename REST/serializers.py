@@ -74,3 +74,8 @@ class MenuSerializer(serializers.ModelSerializer):
             "name",
             "sub_category"
         )
+
+class LeadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Leads
+        fields = "__all__"

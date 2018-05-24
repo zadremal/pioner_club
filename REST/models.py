@@ -86,7 +86,6 @@ class DishCategories(models.Model):
         return '{} - {}'.format(self.menu_category, self.dish_category)
 
 
-
 class Dish(models.Model):
     name = models.CharField(max_length=255)
     category = models.ForeignKey("DishCategories", related_name="dish", on_delete=models.CASCADE)
@@ -106,4 +105,15 @@ class Dish(models.Model):
         return self.name
 
 
+class Leads(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    reserve_date = models.DateField(blank=True, null = True)
+    name = models.CharField(max_length=256, verbose_name="Имя")
+    phone = models.IntegerField()
+    email = models.EmailField()
 
+    def __str__(self):
+        return "{} - {}".format(self.date, self.phone)
+
+    class Meta:
+        verbose_name_plural = "Заявки"

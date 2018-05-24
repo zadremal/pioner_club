@@ -12,5 +12,5 @@ urlpatterns =  [
     path('deals-main/', views.ListDealsMain.as_view(), name='deals_list_main'),
     path('menu/<int:pk>/', views.MenuSubCategoryList.as_view(), name='category_list'),
     path('menu/', views.MenuList.as_view(), name='menu_list'),
-
+    path('lead/submit/', views.lead_submit, name='lead_submit'),
 ]
