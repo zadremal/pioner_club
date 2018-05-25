@@ -9,4 +9,4 @@ REST/__pycache__
 REST/migrations
 
 #env
-enx.txt
+.env
