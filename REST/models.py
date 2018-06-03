@@ -34,7 +34,7 @@ class Places(models.Model):
     name = models.CharField(max_length=255, verbose_name="Место проведения мероприятия")
     location = models.CharField(max_length=255, default="пр-кт Испытателей 26/2", verbose_name="Адрес")
     open_hours = MarkdownxField(verbose_name="Режим работы")
-    price = MarkdownxField(verbose_name="Цены на вход")
+    price = MarkdownxField(verbose_name="Цены")
 
 
     def __str__(self):
@@ -109,8 +109,8 @@ class Leads(models.Model):
     date = models.DateTimeField(auto_now_add=True)
     reserve_date = models.DateField(blank=True, null = True)
     name = models.CharField(max_length=256, verbose_name="Имя")
-    phone = models.IntegerField()
-    email = models.EmailField()
+    phone = models.CharField(max_length=12, verbose_name="Телефон")
+    email = models.EmailField(blank=True, null=True)
 
     def __str__(self):
         return "{} - {}".format(self.date, self.phone)

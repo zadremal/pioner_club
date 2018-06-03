@@ -7,6 +7,7 @@ class PlacesSerializer(serializers.ModelSerializer):
 
         fields = '__all__'
 
+
 class PartyDetailSerializer(serializers.ModelSerializer):
     place = PlacesSerializer()
     class Meta:
@@ -64,6 +65,7 @@ class MenuCategorySerializer(serializers.ModelSerializer):
             'dish',
             'dish_category_description',
         )
+
 
 class MenuSerializer(serializers.ModelSerializer):
     sub_category = MenuCategorySerializer(many=True, read_only=True)

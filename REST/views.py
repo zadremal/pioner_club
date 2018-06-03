@@ -12,6 +12,11 @@ class ListParties(generics.ListAPIView):
     serializer_class = serializers.PartiesListSerializer
 
 
+class ListPlaces(generics.ListAPIView):
+    queryset = models.Places.objects.all()
+    serializer_class = serializers.PlacesSerializer
+
+
 class ListPartiesMain(generics.ListAPIView):
     queryset = models.Party.objects.filter(on_main = True, active=True)
     serializer_class = serializers.PartiesListSerializer
