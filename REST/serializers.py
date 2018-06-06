@@ -81,3 +81,13 @@ class LeadSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Leads
         fields = "__all__"
+
+class BirthdaySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Birthdays
+        fields = "__all__"
+
+class BanketSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Bankets
+        fields = "__all__"

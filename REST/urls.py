@@ -13,5 +13,7 @@ urlpatterns =  [
     path('deals-main/', views.ListDealsMain.as_view(), name='deals_list_main'),
     path('menu/<int:pk>/', views.MenuSubCategoryList.as_view(), name='category_list'),
     path('menu/', views.MenuList.as_view(), name='menu_list'),
-    path('lead/submit/', views.lead_submit, name='lead_submit'),
+    path('submit/lead/', views.lead_submit, name='lead_submit'),
+    path('submit/birthday/', views.birthday_submit, name='birthday_submit'),
+    path('submit/banket/', views.banket_submit, name='banket_submit'),
 ]

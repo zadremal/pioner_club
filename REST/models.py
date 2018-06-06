@@ -113,7 +113,35 @@ class Leads(models.Model):
     email = models.EmailField(blank=True, null=True)
 
     def __str__(self):
-        return "{} - {}".format(self.date, self.phone)
+        return "{} - {}".format(self.date.strftime("%d.%m.%y"), self.phone)
 
     class Meta:
-        verbose_name_plural = "Заявки"
+        verbose_name_plural = "Заявки - бронирования"
+
+
+class Birthdays(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    birthday_date = models.DateTimeField(blank=True, null = True)
+    name = models.CharField(max_length=256, verbose_name="Имя")
+    phone = models.CharField(max_length=12, verbose_name="Телефон")
+    email = models.EmailField(blank=True, null=True)
+
+    def __str__(self):
+        return "{} - {}".format(self.date.strftime("%d.%m.%y"), self.phone)
+
+    class Meta:
+        verbose_name_plural = "Заявки - дни рождения"
+
+
+class Bankets(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    banket_date = models.DateField(blank=True, null=True)
+    name = models.CharField(max_length=256, verbose_name="Имя")
+    phone = models.CharField(max_length=12, verbose_name="Телефон")
+    email = models.EmailField()
+
+    def __str__(self):
+        return "{} - {}".format(self.date.strftime("%d.%m"), self.phone)
+
+    class Meta:
+        verbose_name_plural = "Заявки - банкеты"

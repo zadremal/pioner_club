@@ -13,4 +13,12 @@ admin.site.register(models.Units)
 admin.site.register(models.Dish)
 @admin.register(models.Leads)
 class LeadsAdmin(admin.ModelAdmin):
+    readonly_fields = ["name", "phone", "email", "date"]
+
+@admin.register(models.Birthdays)
+class LeadsAdmin(admin.ModelAdmin):
+    readonly_fields = ["name", "phone", "email"]
+
+@admin.register(models.Bankets)
+class LeadsAdmin(admin.ModelAdmin):
     readonly_fields = ["name", "phone", "email"]
