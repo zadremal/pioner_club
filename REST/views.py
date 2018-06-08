@@ -64,6 +64,7 @@ def lead_submit(request):
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['POST'])
 def birthday_submit(request):
     serializer = serializers.BirthdaySerializer(data=request.data)
@@ -80,5 +81,15 @@ def banket_submit(request):
     if serializer.is_valid():
         serializer.save()
         send_mail(serializer.validated_data, "anton.kamynin@gmail.com", "Заявка на банкет", "banket")
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def feedback_submit(request):
+    serializer = serializers.FeedbackSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        send_mail(serializer.validated_data, "anton.kamynin@gmail.com", "Обратная связь", "feedback")
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

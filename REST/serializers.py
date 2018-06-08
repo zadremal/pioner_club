@@ -91,3 +91,8 @@ class BanketSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Bankets
         fields = "__all__"
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Feedbacks
+        fields = "__all__"

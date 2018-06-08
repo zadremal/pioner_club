@@ -16,4 +16,5 @@ urlpatterns =  [
     path('submit/lead/', views.lead_submit, name='lead_submit'),
     path('submit/birthday/', views.birthday_submit, name='birthday_submit'),
     path('submit/banket/', views.banket_submit, name='banket_submit'),
+    path('submit/feedback/', views.feedback_submit, name='feedback_submit'),
 ]

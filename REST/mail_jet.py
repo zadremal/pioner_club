@@ -15,6 +15,7 @@ def send_mail(serialized_data, recipient, subject, type):
     phone = serialized_data.get("phone")
     email = serialized_data.get("email")
     date = serialized_data.get("date")
+    message = serialized_data.get("text")
     try:
         birthday_date = serialized_data.get("birthday_date").strftime("%d.%m")
     except AttributeError:
@@ -24,7 +25,8 @@ def send_mail(serialized_data, recipient, subject, type):
     html_body = {
         "banket" : "<h4>Имя: {} </h4><h4>Телефон: {} </h4> <h4>Email: {} </h4> <br />дата заявки {}".format(name, phone, email, date),
         "birthday": "<h4>Имя: {} </h4> <h4>Телефон: {} </h4> <h4>День Рождения: {} </h4> <br />дата заявки {}".format(name, phone, birthday_date, date),
-        "reserve": "<h4>Имя: {} </h4><h4>Телефон: {} </h4> <br />дата заявки {}".format(name, phone, date)
+        "reserve": "<h4>Имя: {} </h4><h4>Телефон: {} </h4> <br />дата заявки {}".format(name, phone, date),
+        "feedback": "<h4>Имя: {} </h4><h4>Email: {} </h4>  <h4> Сообщение: </h4> {}".format(name, email, message)
 
     }
     data = {

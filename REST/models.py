@@ -145,3 +145,15 @@ class Bankets(models.Model):
 
     class Meta:
         verbose_name_plural = "Заявки - банкеты"
+
+class Feedbacks(models.Model):
+    date = models.DateTimeField(auto_now_add=True)
+    name = models.CharField(max_length=256, verbose_name="Имя")
+    email = models.EmailField()
+    text = models.TextField()
+
+    def __str__(self):
+        return "Сообщение с контактной формы"
+
+    class Meta:
+        verbose_name_plural = "Заявки - обратная связь"
