@@ -5,12 +5,12 @@ from datetime import *
 
 API_KEY = os.environ['MJ_APIKEY_PUBLIC']
 API_SECRET = os.environ['MJ_APIKEY_PRIVATE']
+EMAIL = os.environ['SUBMISSION_EMAIL']
 
 
-def send_mail(serialized_data, recipient, subject, type):
+def send_mail(serialized_data, subject, type):
+
     mailjet = Client(auth=(API_KEY, API_SECRET), version='v3.1')
-
-
     name = serialized_data.get("name")
     phone = serialized_data.get("phone")
     email = serialized_data.get("email")
@@ -38,7 +38,7 @@ def send_mail(serialized_data, recipient, subject, type):
                 },
                 "To": [
                     {
-                        "Email": recipient,
+                        "Email": EMAIL,
                     }
                 ],
                 "Subject": subject,

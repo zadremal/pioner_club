@@ -60,7 +60,7 @@ def lead_submit(request):
     serializer = serializers.LeadSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-        send_mail(serializer.validated_data, "anton.kamynin@gmail.com", "Новое бронирование столика", "reserve")
+        send_mail(serializer.validated_data, "Новое бронирование столика", "reserve")
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -70,7 +70,7 @@ def birthday_submit(request):
     serializer = serializers.BirthdaySerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-        send_mail(serializer.validated_data, "anton.kamynin@gmail.com", "Заявка на День Рождения", "birthday")
+        send_mail(serializer.validated_data, "Заявка на День Рождения", "birthday")
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -80,7 +80,7 @@ def banket_submit(request):
     serializer = serializers.BanketSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-        send_mail(serializer.validated_data, "anton.kamynin@gmail.com", "Заявка на банкет", "banket")
+        send_mail(serializer.validated_data, "Заявка на банкет", "banket")
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -90,6 +90,6 @@ def feedback_submit(request):
     serializer = serializers.FeedbackSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
-        send_mail(serializer.validated_data, "anton.kamynin@gmail.com", "Обратная связь", "feedback")
+        send_mail(serializer.validated_data, "Обратная связь", "feedback")
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
