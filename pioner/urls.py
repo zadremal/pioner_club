@@ -34,5 +34,3 @@ if settings.DEBUG is True:
 urlpatterns += [
     path('markdownx/', include(markdownx)),
 ]
-
-

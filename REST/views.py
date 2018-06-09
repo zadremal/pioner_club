@@ -22,7 +22,6 @@ class ListPartiesMain(generics.ListAPIView):
     serializer_class = serializers.PartiesListSerializer
 
 
-
 class DetailParty(generics.RetrieveAPIView):
     queryset = models.Party.objects.all()
     serializer_class = serializers.PartyDetailSerializer

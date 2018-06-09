@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'wc69+6v1m1d9&!@e68)z+g$z&d&prr^4bfre$
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
 ALLOWED_HOSTS = [os.environ.get("DJANGO_ALLOWED_HOSTS")]
 
@@ -60,11 +60,11 @@ MIDDLEWARE = [
 
 
 #SECURITY
-SECURE_CONTENT_TYPE_NOSNIFF=True
-SECURE_BROWSER_XSS_FILTER=True
+SECURE_CONTENT_TYPE_NOSNIFF = True
+SECURE_BROWSER_XSS_FILTER = True
 # SESSION_COOKIE_SECURE=True
-CSRF_COOKIE_SECURE=True
-X_FRAME_OPTIONS='DENY'
+CSRF_COOKIE_SECURE = True
+X_FRAME_OPTIONS = 'DENY'
 
 ROOT_URLCONF = 'pioner.urls'
 
@@ -96,9 +96,9 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.mysql',
         'HOST': os.environ.get('DJANGO_DB_HOST'),
-        'NAME' : os.environ.get('DJANGO_DB_NAME'),
-        'USER' : os.environ.get('DJANGO_DB_USER'),
-        'PASSWORD' : os.environ.get('DJANGO_DB_PASSWORD'),
+        'NAME': os.environ.get('DJANGO_DB_NAME'),
+        'USER': os.environ.get('DJANGO_DB_USER'),
+        'PASSWORD': os.environ.get('DJANGO_DB_PASSWORD'),
         'default - character - set': 'utf8',
         'OPTIONS': {
             'init_command': "SET SESSION sql_mode='STRICT_ALL_TABLES'",

@@ -50,4 +50,3 @@ def send_mail(serialized_data, subject, mail_type):
     }
 
     mailjet.send.create(data=data)
-

@@ -25,5 +25,3 @@ class LeadsAdmin(admin.ModelAdmin):
 @admin.register(models.Bankets)
 class LeadsAdmin(admin.ModelAdmin):
     readonly_fields = ["name", "phone", "email"]
-
-
