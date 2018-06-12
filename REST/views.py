@@ -54,6 +54,16 @@ class MenuList(generics.ListAPIView):
     serializer_class = serializers.MenuSerializer
 
 
+class BeerList(generics.ListAPIView):
+    queryset = models.Beer.objects.all()
+    serializer_class = serializers.BeerSerializer
+
+
+class BottleBeerList(generics.ListAPIView):
+    queryset = models.Countries.objects.all()
+    serializer_class = serializers.BottleCountrySerializer
+
+
 @api_view(['POST'])
 def lead_submit(request):
     serializer = serializers.LeadSerializer(data=request.data)

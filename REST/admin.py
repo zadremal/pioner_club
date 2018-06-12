@@ -10,7 +10,9 @@ admin.site.register(models.MenuCategories)
 admin.site.register(models.DishCategories)
 admin.site.register(models.Units)
 admin.site.register(models.Dish)
-
+admin.site.register(models.Beer)
+admin.site.register(models.BottleBeer)
+admin.site.register(models.Countries)
 
 @admin.register(models.Leads)
 class LeadsAdmin(admin.ModelAdmin):

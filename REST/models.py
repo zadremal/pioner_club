@@ -83,10 +83,25 @@ class MenuCategories(models.Model):
         verbose_name = "Меню - Место реализации"
 
 
+class Countries(models.Model):
+    name = models.CharField(max_length=255)
+    order = models.IntegerField(default=1, verbose_name="Порядок")
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        ordering = ["order"]
+
+
+
 class DishCategories(models.Model):
-    menu_category = models.ForeignKey('MenuCategories', related_name='sub_category', on_delete=models.CASCADE)
-    dish_category = models.CharField(max_length=255)
-    dish_category_description = models.CharField(max_length=255, blank=True)
+
+    menu_category = models.ForeignKey('MenuCategories', related_name='sub_category',
+                                      on_delete=models.CASCADE, verbose_name="Категория меню")
+    order = models.IntegerField(blank=True, null=True, verbose_name="Порядок отображения")
+    dish_category = models.CharField(max_length=255, verbose_name="Категория блюда")
+    dish_category_description = models.CharField(max_length=255, blank=True, verbose_name="Описание категории блюд")
 
     def __str__(self):
         return '{} - {}'.format(self.menu_category, self.dish_category)
@@ -100,7 +115,7 @@ class Dish(models.Model):
     name = models.CharField(max_length=255, verbose_name="Название")
     category = models.ForeignKey("DishCategories", related_name="dish", on_delete=models.CASCADE,
                                  verbose_name="Категория")
-    consist = models.TextField(verbose_name="Состав")
+    details = models.TextField(verbose_name="Дополнительно", blank=True, null=True)
     net = models.FloatField(verbose_name="Вес/объем")
     units = models.ForeignKey('Units', on_delete=models.CASCADE, verbose_name="Единица измерения")
     price = models.IntegerField(verbose_name="Стоимость")
@@ -116,6 +131,50 @@ class Dish(models.Model):
         verbose_name_plural = "Меню"
         verbose_name = "Позиция"
         ordering = ["category"]
+
+
+class BottleBeer(models.Model):
+    name = models.CharField(max_length=255, verbose_name="Название")
+    details = models.TextField(verbose_name="Дополнительно", blank=True, null=True)
+    alcohol = models.FloatField(verbose_name="Алкоголь")
+    country = models.ForeignKey("Countries", related_name="bottle_beer", verbose_name="Страна",
+                                on_delete=models.CASCADE)
+    net = models.FloatField(verbose_name="Объем")
+    price = models.IntegerField(verbose_name="Стоимость")
+    iiko_id = models.IntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return "{}. {}".format(self.country, self.name)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Пиво Бутылочное"
+        verbose_name = "Пиво"
+        ordering = ["country"]
+
+
+class Beer(models.Model):
+    name = models.CharField(max_length=255, verbose_name="Название")
+    details = models.TextField(verbose_name="Дополнительно", blank=True, null=True)
+    alcohol = models.FloatField(verbose_name="Алкоголь")
+    country = models.ForeignKey("Countries", related_name="beer", verbose_name="Страна",
+                                on_delete=models.CASCADE)
+    price03 = models.IntegerField(verbose_name="Стоимость за 0,3")
+    price05 = models.IntegerField(verbose_name="Стоимость за 0,5")
+    iiko_id = models.IntegerField(blank=True, null=True)
+
+    def __str__(self):
+        return "{}. {}".format(self.country, self.name)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name_plural = "Пиво Разливное"
+        verbose_name = "Пиво"
+        ordering = ["name"]
 
 
 class Leads(models.Model):

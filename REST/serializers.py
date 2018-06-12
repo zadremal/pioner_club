@@ -84,6 +84,45 @@ class MenuSerializer(serializers.ModelSerializer):
         )
 
 
+class CountrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.Countries
+        fields = "__all__"
+
+class BeerSerializer(serializers.ModelSerializer):
+    country = CountrySerializer(many=False)
+
+    class Meta:
+        model = models.Beer
+        fields = (
+            "id",
+            "name",
+            "details",
+            "alcohol",
+            "country",
+            "price03",
+            "price05",
+        )
+
+
+class BottleBeerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = models.BottleBeer
+        fields = "__all__"
+
+
+class BottleCountrySerializer(serializers.ModelSerializer):
+    bottle_beer = BottleBeerSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = models.Countries
+        fields = (
+            "id",
+            "name",
+            "bottle_beer"
+        )
+
+
 class LeadSerializer(serializers.ModelSerializer):
 
     class Meta:
