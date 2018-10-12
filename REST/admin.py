@@ -27,3 +27,13 @@ class LeadsAdmin(admin.ModelAdmin):
 @admin.register(models.Bankets)
 class LeadsAdmin(admin.ModelAdmin):
     readonly_fields = ["name", "phone", "email"]
+
+
+@admin.register(models.Newyears)
+class LeadsAdmin(admin.ModelAdmin):
+    readonly_fields = ["name", "phone", "email", "date"]
+
+
+@admin.register(models.Newyear_Corporates)
+class LeadsAdmin(admin.ModelAdmin):
+    readonly_fields = ["name", "phone", "email", "date"]

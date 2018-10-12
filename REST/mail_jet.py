@@ -21,14 +21,28 @@ def send_mail(serialized_data, subject, mail_type):
         birthday_date = datetime.now().strftime("%d.%m")
 
     html_body = {
-        "banket": "<h4>Имя: {} </h4><h4>Телефон: {} </h4> <h4>Email: {} </h4> <br />дата заявки {}"
-        .format(name, phone, email, mail_date),
-        "birthday": "<h4>Имя: {} </h4> <h4>Телефон: {} </h4> <h4>День Рождения: {} </h4> <br />дата заявки {}"
-        .format(name, phone, birthday_date, mail_date),
-        "reserve": "<h4>Имя: {} </h4><h4>Телефон: {} </h4> <br />дата заявки {}"
-        .format(name, phone, mail_date),
-        "feedback": "<h4>Имя: {} </h4><h4>Email: {} </h4>  <h4> Сообщение: </h4> {}"
-        .format(name, email, message)
+        "banket": "<h4> Имя: {} </h4>"
+                  "<h4> Телефон: {} </h4>"
+                  "<h4>Email: {} </h4>"
+                  "<br />дата заявки {}".format(name, phone, email, mail_date),
+        "birthday": "<h4> Имя: {} </h4> "
+                    "<h4>Телефон: {} </h4>"
+                    "<h4>День Рождения: {} </h4>"
+                    "<br />дата заявки {}".format(name, phone, birthday_date, mail_date),
+        "reserve": "<h4>Имя: {} </h4>"
+                   "<h4>Телефон: {} </h4>"
+                   "<br />дата заявки {}".format(name, phone, mail_date),
+        "feedback": "<h4>Имя: {} </h4>"
+                    "<h4>Email: {} </h4>"
+                    "<h4> Сообщение:</h4>"
+                    "<p> {} </p>".format(name, email, message),
+        "newyear": "<h4>Имя: {} </h4>"
+                   "<h4>Телефон: {} </h4>"
+                   "<br />дата заявки {}".format(name, phone, mail_date),
+        "newyear_corporate": "<h4>Имя: {} </h4>"
+                             "<h4>Телефон: {} </h4>"
+                             "<br />дата заявки {}".format(name, phone, mail_date),
+
     }
     data = {
         'Messages': [

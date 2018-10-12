@@ -149,3 +149,17 @@ class FeedbackSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.Feedbacks
         fields = "__all__"
+
+
+class NewyearSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Newyears
+        fields = "__all__"
+
+
+class NewyearCorporateSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = models.Newyear_Corporates
+        fields = "__all__"

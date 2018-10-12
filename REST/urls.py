@@ -17,4 +17,8 @@ urlpatterns = [
     path('submit/birthday/', views.birthday_submit, name='birthday_submit'),
     path('submit/banket/', views.banket_submit, name='banket_submit'),
     path('submit/feedback/', views.feedback_submit, name='feedback_submit'),
+    path('submit/newyear/', views.lead_submit, name='newyear_submit'),
+    path('submit/newyear/corporate', views.lead_submit, name='newyear_corporate_submit'),
+
+
 ]

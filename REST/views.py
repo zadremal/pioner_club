@@ -102,3 +102,23 @@ def feedback_submit(request):
         send_mail(serializer.validated_data, "Обратная связь", "feedback")
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def newyear_submit(request):
+    serializer = serializers.NewyearSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        send_mail(serializer.validated_data, "Бронь на новый год", "newyear")
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['POST'])
+def newyear_corporate_submit(request):
+    serializer = serializers.NewyearCorporateSerializer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        send_mail(serializer.validated_data, "Новогодний корпоратив", "newyear_corporate")
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

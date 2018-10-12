@@ -7,6 +7,7 @@ import datetime
 class Party(models.Model):
     name = models.CharField(max_length=255, verbose_name='Название')
     date = models.DateField(verbose_name='Дата')
+    date_end = models.DateField(verbose_name="Дата окончания", blank=True, null=True)
     time_start = models.TimeField(default=datetime.time(22, 00), verbose_name='Начало мероприятия')
     time_end = models.TimeField(default=datetime.time(6, 00), blank=True, null=True,
                                 verbose_name='Завершение мероприятия')
@@ -234,3 +235,33 @@ class Feedbacks(models.Model):
     class Meta:
         verbose_name_plural = "Заявки - обратная связь"
         verbose_name = "Заявка"
+
+
+class Newyears(models.Model):
+    date = models.DateTimeField(auto_now_add=True, verbose_name="Дата заявки")
+    reserve_date = models.DateField(blank=True, null=True, verbose_name="Дата брони")
+    name = models.CharField(max_length=256, verbose_name="Имя")
+    phone = models.CharField(max_length=12, verbose_name="Телефон")
+    email = models.EmailField(blank=True, null=True, verbose_name="Email")
+
+    def __str__(self):
+        return "{} - {}".format(self.date.strftime("%d.%m.%y"), self.phone)
+
+    class Meta:
+        verbose_name_plural = "Заявки на новый год"
+        verbose_name = "Заявка"
+
+
+class Newyear_Corporates(models.Model):
+    date = models.DateTimeField(auto_now_add=True, verbose_name="Дата заявки")
+    reserve_date = models.DateField(blank=True, null=True, verbose_name="Дата брони")
+    name = models.CharField(max_length=256, verbose_name="Имя")
+    phone = models.CharField(max_length=12, verbose_name="Телефон")
+    email = models.EmailField(blank=True, null=True, verbose_name="Email")
+
+    def __str__(self):
+        return "{} - {}".format(self.date.strftime("%d.%m.%y"), self.phone)
+
+    class Meta:
+        verbose_name_plural = "Новгодние корпоративы"
+        verbose_name = "Корпоратив"
